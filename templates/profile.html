@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<style>
+			body {
+			  margin: 0;
+			  font-family: Arial, Helvetica, sans-serif;
+			}
+			
+			.topnav {
+			  overflow: hidden;
+			  background-color: #333;
+			}
+			
+			.topnav a {
+			  float: left;
+			  color: #f2f2f2;
+			  text-align: center;
+			  padding: 14px 16px;
+			  text-decoration: none;
+			  font-size: 17px;
+			}
+			
+			.topnav a:hover {
+			  background-color: #ddd;
+			  color: black;
+			}
+			
+			.topnav a.active {
+			  background-color: #aa0404;
+			  color: white;
+			}
+
+			.post {
+				background-color: lightgrey;
+				width: 300px;
+				border: 15px solid #aa0404;
+				padding: 25px;
+				margin: 20px;
+				border-radius: 15px;
+				}
+			</style>
+			
+			<div class="topnav">
+			  <a class="active" href="/">HobNob</a>
+			  <a href="/feed">My Feed</a>
+			  <a href="/newpost">New Post +</a>
+			  <a href="/viewmyprofile">View My Profile</a>
+              <a href="/myprofile">Edit Profile</a>
+			  <a href="/logout">Logout</a>
+			</div>
+		<meta charset="UTF-8">
+		<title>HobNob</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">					
+	</head>
+	<body>
+		<center>
+        <h2>@{{ user }}</h2>
+		<h3>{{bio.name}}</h3>
+		<p>{{bio.bio}}</p>
+
+		<div id="follow">
+		<!---<form action="" method = "POST">
+            <p><input type = "submit" value = "Follow"/></p>
+        </form>--->
+	</div>
+
+        {% for i in posts[::-1] %}
+	<div class="post">
+		<p>@{{user}}</p>
+		<p><b>{{i.text}}</b></p>
+	</div>
+		{% endfor %}
+</center>
+	</body>
+</html>
